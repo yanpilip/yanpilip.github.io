@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yan Pilipenko – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,700;62..125,800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a calm, confident personal page; precise, no fluff.
+   IDEA: a Swiss railway timetable of a career: stops, years, the current station.
+   PICTURE: the route itself, a big line from Almaty 2019 to MSc 2028 with the "now" stop in red.
+   COLOUR and TYPE: white, black, signal red #e4002b, one grey; Archivo wide 800 + Archivo.
+   LAYOUT: strict left edge, huge year numerals hanging in a left column, thick top rules. */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e0e0e);--ink:light-dark(#111111,#f2f2f2);--grey:light-dark(#6b6b6b,#9a9a9a);--line:light-dark(#111111,#f2f2f2);--soft:light-dark(#e6e6e6,#2a2a2a);--red:#e4002b}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Archivo,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.wide{font-stretch:112%;font-weight:800}
+nav{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding:18px max(5vw,16px);border-bottom:6px solid var(--line)}
+nav .who{font-stretch:112%;font-weight:800;font-size:18px}
+nav .links{display:flex;flex-wrap:wrap;gap:4px 20px}
+nav .links a{text-decoration:none;font-weight:500;padding:10px 0;min-height:44px;display:inline-flex;align-items:center}
+nav .links a:hover{color:var(--red)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center}
+h1{font-size:clamp(40px,6vw,64px);line-height:1.02;margin:0 0 16px;text-wrap:balance}
+.role{font-size:20px;font-weight:500;margin:0 0 20px}
+.role b{color:var(--red);font-weight:700}
+.lede{color:var(--grey);max-width:52ch;margin:0 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:2px solid var(--line);font-weight:700;text-decoration:none}
+.btn.fill{background:var(--red);border-color:var(--red);color:#fff}
+.btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* timetable picture */
+.route{border-top:6px solid var(--line);padding-top:8px}
+.route h2{font-size:13px;font-weight:700;color:var(--grey);margin:0 0 6px}
+.stop{display:grid;grid-template-columns:5.2em 34px minmax(0,1fr);align-items:stretch}
+.stop .yr{font-stretch:112%;font-weight:800;font-size:clamp(24px,3vw,34px);line-height:1;padding:14px 0;white-space:nowrap}
+.stop .rail{position:relative}
+.stop .rail::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:6px;margin-left:-3px;background:var(--line)}
+.stop:first-of-type .rail::before{top:50%}
+.stop:last-of-type .rail::before{bottom:50%;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px)}
+.stop .rail i{position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--bg);border:4px solid var(--line)}
+.stop.now .rail i{width:26px;height:26px;margin:-13px 0 0 -13px;background:var(--red);border-color:var(--red);box-shadow:0 0 0 6px color-mix(in srgb,var(--red) 22%,transparent)}
+.stop .what{padding:12px 0 12px 12px;border-bottom:1px solid var(--soft);display:flex;flex-direction:column;justify-content:center}
+.stop .what b{font-weight:700;line-height:1.3}
+.stop .what span{color:var(--grey);font-size:14px;line-height:1.4}
+.stop.now .what b{color:var(--red)}
+.stop.next .yr,.stop.next .what{opacity:.55}
+@media (prefers-reduced-motion:no-preference){.stop.now .rail i{animation:pulse 2.4s ease-in-out infinite}@keyframes pulse{50%{box-shadow:0 0 0 12px color-mix(in srgb,var(--red) 0%,transparent)}}}
+/* sections */
+.sec{border-top:6px solid var(--line)}
+.sec-grid{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr);gap:clamp(16px,4vw,56px)}
+.sec h2{font-size:clamp(28px,3.4vw,40px);line-height:1.05;margin:0}
+.summary p{margin:0 0 1em;max-width:68ch}
+.summary p:first-child{font-size:19px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;padding:20px 0;border-bottom:1px solid var(--soft)}
+.item:first-child{padding-top:0}
+.item h3{margin:0;font-size:19px;line-height:1.3}
+.item .org{color:var(--grey);font-weight:500}
+.item time{font-weight:700;white-space:nowrap;text-align:right}
+.item ul{grid-column:1/-1;margin:8px 0 0;padding-left:1.1em}
+.item li{margin:4px 0;max-width:72ch}
+.item li::marker{color:var(--red)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px}
+.skills h3{font-size:15px;margin:0 0 8px;padding-top:8px;border-top:3px solid var(--line)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{border:1px solid var(--soft);padding:3px 10px;font-size:14px;white-space:nowrap}
+.langs td{padding:8px 0;border-bottom:1px solid var(--soft)}
+.langs td+td{text-align:right;color:var(--grey);padding-left:16px;white-space:nowrap}
+table{border-collapse:collapse;width:100%}
+footer{border-top:6px solid var(--line);background:var(--ink);color:var(--bg)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:baseline}
+footer .big{font-size:clamp(28px,4vw,44px);line-height:1.05;margin:0}
+footer a{font-weight:700}
+footer small{display:block;opacity:.7;font-size:13px;margin-top:6px}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.sec-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.stop{grid-template-columns:3.6em 28px minmax(0,1fr)}.item{grid-template-columns:minmax(0,1fr)}.item time{text-align:left;grid-row:1}}
+</style>
+</head>
+<body>
+<nav>
+  <span class="who">Yan Pilipenko</span>
+  <div class="links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+</nav>
+
+<header class="band"><div class="wrap hero">
+  <div>
+    <h1 class="wide">Yan Pilipenko</h1>
+    <p class="role">Software engineer · <b>MSc AI student at ELTE</b> · Budapest</p>
+    <p class="lede">I build software that holds up in production, from CI/CD pipelines and cloud infrastructure to machine learning models that train faster and run reliably.</p>
+    <div class="cta">
+      <a class="btn fill" href="https://github.com/yanpilip">GitHub</a>
+      <a class="btn" href="#about">Read my summary</a>
+    </div>
+  </div>
+  <div class="route" aria-label="Career timeline">
+    <h2>Route so far</h2>
+    <div class="stop"><div class="yr">2019</div><div class="rail"><i></i></div><div class="what"><b>Turan College, Almaty</b><span>Information Systems · GPA 4.95/5</span></div></div>
+    <div class="stop"><div class="yr">2021</div><div class="rail"><i></i></div><div class="what"><b>Expobest Kazakhstan</b><span>Project manager intern</span></div></div>
+    <div class="stop"><div class="yr">2023</div><div class="rail"><i></i></div><div class="what"><b>ELTE, Budapest</b><span>BSc Computer Science</span></div></div>
+    <div class="stop"><div class="yr">2025</div><div class="rail"><i></i></div><div class="what"><b>ELTE Numerical Analysis</b><span>Software / ML research assistant</span></div></div>
+    <div class="stop now"><div class="yr">2026</div><div class="rail"><i></i></div><div class="what"><b>MSc AI at ELTE + DevOps intern at 3 Sigma Studios</b><span>Current stop</span></div></div>
+    <div class="stop next"><div class="yr">2028</div><div class="rail"><i></i></div><div class="what"><b>MSc graduation</b><span>Next: machine learning engineering</span></div></div>
+  </div>
+</div></header>
+
+<section class="band sec" id="about"><div class="wrap sec-grid">
+  <h2 class="wide">About me</h2>
+  <div class="summary">
+    <p>I'm Yan Pilipenko, a software engineer from Almaty, Kazakhstan, now based in Budapest.</p>
+    <p>I started out at Turan College, where I studied Information Systems and graduated with a GPA of 4.95 out of 5. During my studies there I got my first real work experience as a project manager intern at Expobest, coordinating a team of 60 interns and building small internal tools in PHP and MySQL. I then moved to Hungary and completed my BSc in Computer Science at Eötvös Loránd University (ELTE). In my final year I worked as a research assistant at ELTE's Department of Numerical Analysis, building a PyTorch benchmarking framework for ECG signal quality assessment on more than 300,000 annotated segments.</p>
+    <p>That project pulled me towards machine learning, and in September 2026 I started my MSc in Computer Science with an Artificial Intelligence specialisation at ELTE. Alongside my studies, I work as a DevOps intern at 3 Sigma Studios. There I fix production bugs on a live trading platform, manage AWS infrastructure and Docker deployments, and built a CI/CD pipeline for an internal API. I also optimised the training of a production TrOCR model, making it three times faster. I speak Russian natively, English at C1 level and Japanese at B2, so I'm comfortable working in international teams.</p>
+    <p>After my MSc, I want to work as a machine learning engineer, building ML systems that run reliably in production rather than only in notebooks. Longer term, I'd like to work on projects that connect Europe and Japan, where both my engineering background and my languages are useful.</p>
+  </div>
+</div></section>
+
+<section class="band sec" id="experience"><div class="wrap sec-grid">
+  <h2 class="wide">Experience</h2>
+  <div>
+    <div class="item"><div><h3>DevOps Intern</h3><span class="org">3 Sigma Studios · Budapest</span></div><time>Aug 2026 – now</time>
+      <ul><li>Found and patched several critical production bugs on a precious-metals trading platform, stopping recurring outages.</li>
+      <li>Made the training of a production TrOCR model three times faster.</li>
+      <li>Built a CI/CD pipeline for an internal Java API: automated testing, versioning and container image publishing.</li>
+      <li>Day-to-day AWS infrastructure, Docker and GitLab workflows.</li></ul></div>
+    <div class="item"><div><h3>Software / ML Research Assistant</h3><span class="org">ELTE Department of Numerical Analysis · Budapest</span></div><time>Oct 2025 – Jan 2026</time>
+      <ul><li>Built a scalable PyTorch benchmarking framework for ECG quality assessment on 300k+ annotated segments, reaching 90% prediction accuracy.</li>
+      <li>Automated preprocessing, feature extraction and subject-wise evaluation with Python, NumPy, SciPy and WFDB.</li></ul></div>
+    <div class="item"><div><h3>Project Manager Intern</h3><span class="org">Expobest Kazakhstan · Almaty</span></div><time>Apr – Jul 2021</time>
+      <ul><li>Coordinated schedules and tasks for 60 interns, with every project delivered on time.</li>
+      <li>Built internal workflow tools in HTML, CSS, JavaScript, PHP and MySQL, cutting manual admin work by 40%.</li></ul></div>
+  </div>
+</div></section>
+
+<section class="band sec" id="education"><div class="wrap sec-grid">
+  <h2 class="wide">Education</h2>
+  <div>
+    <div class="item"><div><h3>MSc Computer Science (Artificial Intelligence)</h3><span class="org">Eötvös Loránd University · Budapest</span></div><time>2026 – 2028</time></div>
+    <div class="item"><div><h3>BSc Computer Science</h3><span class="org">Eötvös Loránd University · Budapest</span></div><time>2023 – 2026</time>
+      <ul><li>Algorithms, data structures, software engineering, databases, operating systems.</li></ul></div>
+    <div class="item"><div><h3>Information Systems, Junior College Degree</h3><span class="org">Turan College · Almaty</span></div><time>2019 – 2023</time>
+      <ul><li>GPA 4.95/5. 1st place, Turan UMITI 2021 Social and Business Project Competition.</li></ul></div>
+  </div>
+</div></section>
+
+<section class="band sec" id="skills"><div class="wrap sec-grid">
+  <h2 class="wide">Skills</h2>
+  <div class="skills" id="skillgrid"></div>
+</div></section>
+
+<footer class="band" id="contact"><div class="wrap">
+  <div><p class="big wide">Let's talk.</p><small>Open to ML engineering and software roles in Budapest or remote.</small></div>
+  <div><a href="https://github.com/yanpilip">github.com/yanpilip</a></div>
+</div></footer>
+
+<script>
+{
+  const groups=[
+    ["Languages",["Python","Java","C#","TypeScript","JavaScript","SQL","C","PHP","Bash"]],
+    ["ML & frameworks",["PyTorch","NumPy","SciPy","FastAPI","React","JUnit"]],
+    ["DevOps & tools",["AWS","Docker","GitLab CI/CD","Git","Linux"]]
+  ];
+  const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const langs=[["Russian","Native"],["English","C1 · IELTS 8.0"],["Japanese","B2 · JLPT N2"],["Ukrainian","B2"],["German","A1"]];
+  document.getElementById("skillgrid").innerHTML=groups.map(([t,xs])=>`<div><h3>${esc(t)}</h3><div class="tags">${xs.map(x=>`<span>${esc(x)}</span>`).join("")}</div></div>`).join("")
+   +`<div><h3>Spoken languages</h3><table class="langs">${langs.map(([l,v])=>`<tr><td>${esc(l)}</td><td>${esc(v)}</td></tr>`).join("")}</table></div>`;
+}
+</script>
+</body>
+</html>
